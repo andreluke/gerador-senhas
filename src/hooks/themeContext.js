@@ -1,7 +1,5 @@
-// hooks/ThemeContext.js
 import React, { createContext, useState, useContext } from 'react';
 
-// Definições de tema
 const themes = {
     light: {
         containerBackground: "#F3F3FF",

@@ -37,24 +37,14 @@ const useStorage = () => {
 
   const updateItem = async (key, oldName, newName) => {
     try {
-      // Recupera os itens armazenados
+   
       let items = await getItem(key);
-
-      // Log para depuração
-      console.log("Itens antes da atualização:", items);
-
-      // Atualiza os itens que correspondem ao oldName
       items = items.map((item) =>
         item.name === oldName ? { ...item, name: newName } : item
       );
 
-      // Log para depuração
-      console.log("Itens após a atualização:", items);
-
-      // Armazena a lista atualizada de volta no AsyncStorage
       await AsyncStorage.setItem(key, JSON.stringify(items));
 
-      // Retorna a lista atualizada
       return items;
     } catch (error) {
       console.error("Erro ao atualizar item:", error);

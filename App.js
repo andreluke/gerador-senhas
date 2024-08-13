@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import Routes from "./src/routes";
-import { ThemeProvider } from './src/hooks/themeContext'; // ajuste o caminho conforme necessário
+import { ThemeProvider } from './src/hooks/themeContext'; 
 
 export default function App() {
   return (

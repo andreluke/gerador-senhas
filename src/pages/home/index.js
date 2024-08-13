@@ -31,7 +31,7 @@ export default function Home() {
      
       <TouchableOpacity style={styles.sunButton} onPress={toggleTheme}>
       <Ionicons
-          name={theme.itemTextColorOpposite === '#000' ? "sunny" : "moon"} // Ajuste o ícone com base na cor do texto
+          name={theme.itemTextColorOpposite === '#000' ? "sunny" : "moon"} 
           size={24}
           color={theme.itemTextColorOpposite}
         />
