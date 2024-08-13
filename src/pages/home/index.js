@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Image, TouchableOpacity, Modal, Animated } from
 import Slider from "@react-native-community/slider";
 import { ModalPassword } from "./components/modalPassword";
 import { useTheme } from "../../hooks/themeContext";
-import Ionicons from '@expo/vector-icons/Ionicons'; // Certifique-se de ter instalado @expo/vector-icons
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 let charset =
   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}<>?";
