@@ -3,20 +3,24 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./pages/home";
 import { Passwords } from "./pages/passwords";
 import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "./hooks/themeContext"; // Certifique-se de ajustar o caminho de acordo com sua estrutura de pastas
+import { useTheme } from "./hooks/themeContext";
+import { TouchableOpacity } from "react-native";
+import { useScreenGuard } from "./hooks/useScreenGuard";
 
 const Tab = createBottomTabNavigator();
 
 export default function Routes() {
   const { theme } = useTheme();
+  const authenticate = useScreenGuard();
 
   return (
     <Tab.Navigator
       screenOptions={{
-         tabBarStyle: {
+        tabBarStyle: {
           backgroundColor: theme.routesBackground,
-          color: theme.itemTextColorOpposite
-       }
+          color: theme.itemTextColorOpposite,
+          borderTopColor: theme.buttonColor
+        },
       }}
     >
       <Tab.Screen
@@ -24,15 +28,13 @@ export default function Routes() {
         component={Home}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused, size, color }) => {
-            return (
-              <Ionicons
-                size={size}
-                color={color}
-                name={focused ? "home" : "home-outline"}
-              />
-            );
-          },
+          tabBarIcon: ({ focused, size, color }) => (
+            <Ionicons
+              size={size}
+              color={color}
+              name={focused ? "home" : "home-outline"}
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -40,15 +42,24 @@ export default function Routes() {
         component={Passwords}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused, size, color }) => {
-            return (
-              <Ionicons
-                size={size}
-                color={color}
-                name={focused ? "lock-closed" : "lock-closed-outline"}
-              />
-            );
-          },
+          tabBarIcon: ({ focused, size, color }) => (
+            <Ionicons
+              size={size}
+              color={color}
+              name={focused ? "lock-closed" : "lock-closed-outline"}
+            />
+          ),
+          tabBarButton: (props) => (
+            <TouchableOpacity
+              {...props}
+              onPress={async () => {
+                const result = await authenticate();
+                if (result) {
+                  props.onPress(); 
+                }
+              }}
+            />
+          ),
         }}
       />
     </Tab.Navigator>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, FlatList, Modal, TouchableOpacity, Animated } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Text, View, StyleSheet, FlatList, Modal, TouchableOpacity, Alert } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import useStorage from "../../hooks/useStorage";
 import { PasswordItem } from "./components/passwordItem";
@@ -17,9 +16,26 @@ export function Passwords() {
   const { theme, toggleTheme } = useTheme();
 
   async function handleDeletePassword(name, password) {
-    const updatedPasswords = await removeItem("@pass", name, password);
-    setListPasswords(updatedPasswords);
-  }
+    Alert.alert(
+        "Confirmar Exclusão",
+        `Tem certeza que deseja deletar a senha "${name}"?`,
+        [
+            {
+                text: "Cancelar",
+                style: "cancel",
+            },
+            {
+                text: "Deletar",
+                style: "destructive",
+                onPress: async () => {
+                    const updatedPasswords = await removeItem("@pass", name, password);
+                    setListPasswords(updatedPasswords);
+                },
+            },
+        ],
+        { cancelable: true }
+    );
+}
 
   function handleEditPassword(name) {
     setSelectedPassword(name);

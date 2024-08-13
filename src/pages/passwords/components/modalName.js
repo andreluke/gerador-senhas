@@ -4,7 +4,7 @@ import { useTheme } from "../../../hooks/themeContext";
 import useStorage from "../../../hooks/useStorage";
 
 export function ModalName({ name, onSave, handleClose }) {
-  const { updateItem } = useStorage();
+  const { updateItem, getItem } = useStorage();
   const { theme } = useTheme();
   const [nome, setNome] = useState(name || ""); 
 
@@ -21,6 +21,16 @@ export function ModalName({ name, onSave, handleClose }) {
     }
 
     try {
+      const existingPasswords = await getItem("@pass");
+      const nameExists = existingPasswords.some(
+        (item) => item.name === newName
+      );
+
+      if (nameExists) {
+        alert("Já existe uma senha com esse nome.");
+        return;
+      }
+
       await updateItem("@pass", name, newName);
       onSave(); 
       handleClose();

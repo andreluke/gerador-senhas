@@ -53,7 +53,7 @@ export default function Home() {
       </View>
 
       <TouchableOpacity style={styles.button} onPress={genetatePassowrd}>
-        <Text style={styles.buttonText}>Gerar senha</Text>
+        <Text style={[styles.buttonText]}>Gerar senha</Text>
       </TouchableOpacity>
 
       <Modal visible={modalVisible} animationType="fade" transparent={true}>
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#FFF",
     fontSize: 20,
+    fontWeight: "bold"
   },
   sunButton: {
     position: "absolute",
