@@ -26,3 +26,7 @@ $ npm run ios
 ## Para android:
 $ npm run web 
 ```
+
+# Exemplo de resultado:
+![image](https://github.com/user-attachments/assets/60fb0288-0ccf-4a91-9066-1ee0d2e867f6)
+
