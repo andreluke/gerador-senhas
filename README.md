@@ -25,10 +25,6 @@ $ npm i
 $ npx expo start
 ## Para android:
 $ npm run android
-## Para ios:
-$ npm run ios
-## Para android:
-$ npm run web 
 ```
 
 # Exemplo de resultado:
