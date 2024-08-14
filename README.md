@@ -1,7 +1,7 @@
 <h1 align="center"> REACT NATIVE PROJECT  </h1>
 
 ###  🧑‍💻- Tecnologias
-Tecnologias e ferramentas utilizadas no projeto: `JavaScript, Expo, NodeJS / Express.js, React Native, React, AsyncStorage, Local Authentication`.
+Tecnologias e ferramentas utilizadas no projeto: `JavaScript, Expo, NodeJS / Express.js, React Native, React, AsyncStorage, Local Authentication`.<br/>
 Ferramentas adicionais: `Android Studio`
 
 ## Descrição do projeto
