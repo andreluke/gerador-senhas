@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
+import { useColorScheme } from 'react-native';
 
 const themes = {
     light: {
@@ -34,7 +35,8 @@ const themes = {
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-    const [theme, setTheme] = useState('light');
+    const deviceTheme = useColorScheme()
+    const [theme, setTheme] = useState(deviceTheme);
 
     const toggleTheme = () => {
         setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
